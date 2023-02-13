@@ -1,0 +1,11 @@
+﻿@model UsuarioModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Nova Senha";
+}
+
+<div class="text-center">
+    <h1>NOVA SENHA</h1>
+</div>
+<p>Não compartilhe com ninguém !! Sua nova senha é: @Model.Senha</p>
+<a asp-controller="Login" asp-action="Index" class="btn btn-primary">Voltar</a>

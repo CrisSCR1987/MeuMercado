@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Comum ou Vendedor";
+}
+
+<div class="text-center">
+    <h1>Você quer ser um usuário consumidor ou um vendedor ?</h1>
+</div>
+
+<a asp-action="CriarUsuarioComum" asp-controller="Login" class="btn btn-primary">Comum</a>
+<a asp-action="CriarUsuarioVendedor" asp-controller="Login" class="btn btn-secondary">Vendedor</a>
+<a asp-action="Index" asp-controller="Login" class="btn btn-outline-dark">Voltar</a>

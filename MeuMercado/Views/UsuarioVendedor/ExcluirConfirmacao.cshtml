@@ -1,0 +1,11 @@
+﻿@model ProdutoModel
+@{
+    ViewData["Title"] = "Confirmação de exclusão";
+}
+
+<div class="text-center">
+    <h1>Você realmente deseja excluir o produto @Model.Nome ?</h1>
+</div>
+
+<a asp-controller="UsuarioVendedor" asp-action="Excluir" asp-route-id="@Model.Id" class="btn btn-danger">Excluir</a>
+<a asp-controller="UsuarioVendedor" asp-action="MeusProdutos" class="btn btn-primary">Voltar</a>

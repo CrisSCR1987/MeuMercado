@@ -1,0 +1,58 @@
+﻿@model List<UsuarioModel>
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<a asp-controller="Usuario" asp-action="Criar" class="btn btn-outline-dark">Criar novo Usuário</a>
+
+<div class="text-center">
+    <h1>Listagem de Usuários</h1>
+</div>
+
+@if (TempData["MensagemSucesso"] != null)
+{
+        <div class="alert alert-success" role="alert">
+        @TempData["MensagemSucesso"]
+        </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+        <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+        </div>
+}
+
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Perfil</th>
+      <th scope="col">Login</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+        @if(Model != null)
+        {
+            @foreach (UsuarioModel usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Nome</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.Perfil</td>
+                    <td>@usuario.Login</td>
+                    <td>@usuario.Sexo</td>
+                    <td><a asp-controller="Usuario" asp-action="Editar" asp-route-id="@usuario.Id" class="btn btn-primary">Editar</a></td>
+                    <td><a asp-controller="Usuario" asp-action="ExcluirConfirmacao" asp-route-id="@usuario.Id" class="btn btn-danger">Excluir</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,63 @@
+﻿@model UsuarioModel 
+
+
+
+<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MeuMercado</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="navbar-brand nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+        @if (Model.Perfil == MeuMercado.Enums.PerfilEnum.Admin)
+        {
+                <li class="navbar-brand nav-item">
+                    <a class="nav-link text-dark" asp-controller="Usuario" asp-action="Index">Usuários</a>
+                </li>
+        }
+                        <li class="navbar-brand nav-item">
+                            <a class="nav-link text-dark" asp-controller="Produto" asp-action="Index">Produtos</a>
+                        </li>
+
+        @if (Model.Perfil == MeuMercado.Enums.PerfilEnum.Admin || Model.Perfil == MeuMercado.Enums.PerfilEnum.Vendedor)
+        {
+                <li class="navbar-brand nav-item">
+                    <a class="nav-link text-dark" asp-controller="UsuarioVendedor" asp-action="MeusProdutos">Meus Produtos</a>
+                </li>
+        }
+
+        <li class="navbar-brand nav-item">
+            <a class="nav-link text-dark" asp-controller="NotaFiscal" asp-action="Index">Minhas Compras</a>
+        </li>
+        <li class="navbar-brand nav-item">
+            <a class="nav-link text-dark" asp-controller="AlterarSenha" asp-action="Index">Alterar Senha</a>
+        </li>
+        @if (Model.Perfil == MeuMercado.Enums.PerfilEnum.Admin)
+        {
+                    <li class="navbar-brand nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Sair">Sair</a>
+                                </li>
+        }
+        @if(Model.Perfil == MeuMercado.Enums.PerfilEnum.Vendedor)
+        {
+                <li class="navbar-brand nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UsuarioVendedor" asp-action="Sair">Sair</a>
+                            </li>
+        }
+        @if(Model.Perfil == MeuMercado.Enums.PerfilEnum.Comum)
+        {
+            <li class="navbar-brand nav-item">
+                <a class="nav-link text-dark" asp-controller="UsuarioComum" asp-action="Sair">Sair</a>
+            </li>
+        }
+        
+        <li class="nav-item">
+                            <p class="nav-link text-dark align-items-lg-end" style="text-align:right">Olá, @Model.Nome</p>
+                        </li>
+                    </ul>
+                </div>
+            

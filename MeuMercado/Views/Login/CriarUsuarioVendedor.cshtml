@@ -1,0 +1,57 @@
+﻿@using MeuMercado.Enums;
+@model CriarUsuarioModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Usuário Vendedor";
+}
+
+<div class="text-center">
+    <h1>Criando Novo Usuário</h1>
+</div>
+<form asp-controller="Login" asp-action="Criar" method="post">
+    <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" asp-for="Nome" id="nome" class="form-control" placeholder="Digite seu nome..." />
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group">
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" class="form-control" asp-for="Sexo">
+            <option value="">Selecione...</option>
+            <option value="@SexoEnum.Masculino">Masculino</option>
+            <option value="@SexoEnum.Feminino">Feminino</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Sexo)
+    </div>
+
+    <div class="form-group">
+        <label for="login" class="form-label">Login:</label>
+        <input type="text" asp-for="Login" id="login" class="form-control" placeholder="Digite seu login..." />
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-label">Endereço de Email:</label>
+        <input type="text" asp-for="Email" id="email" class="form-control" placeholder="Digite seu Email..." />
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group">
+        <label for="perfil">Perfil:</label>
+        <select class="form-control" id="perfil" asp-for="Perfil">
+            <option value="@PerfilEnum.Vendedor" selected>Vendedor</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Perfil)
+    </div>
+
+    <div class="form-group">
+        <label for="senha" class="form-label">Senha:</label>
+        <input type="password" asp-for="Senha" id="senha" class="form-control" placeholder="Digite sua senha..." />
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+
+    <div class="form-control">
+        <button type="submit" class="btn btn-primary">Criar</button>
+    </div>
+</form>

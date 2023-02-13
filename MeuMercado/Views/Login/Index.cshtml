@@ -1,0 +1,46 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Login";
+}
+
+@if(TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+@if(TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<form asp-controller="Login" asp-action="Entrar" method="post">
+    <div class="form-group">
+        <label for="login" class="form-label">Login:</label>
+        <input type="text" asp-for="Login" id="login" class="form-control" placeholder="Digite seu login..." />
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+
+    <div class="form-group">
+        <label for="senha" class="form-label">Senha:</label>
+        <input type="password" asp-for="Senha" id="senha" class="form-control" placeholder="Digite sua senha..." />
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+
+    <p class="mb-4 text-sm mx-auto">
+        Esqueceu a sua Senha ?
+        <a asp-action="Index" asp-controller="RedefinirSenha" class="text-primary text-gradient font-weight-bold">Aperte aqui !</a>
+    </p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </div>
+
+    <p class="mb-4 text-sm mx-auto">
+        Não tem uma conta ?
+        <a asp-action="ComumOuVendedor" asp-controller="Login" class="text-primary text-gradient font-weight-bold">Crie uma nova agora !</a>
+    </p>
+</form>

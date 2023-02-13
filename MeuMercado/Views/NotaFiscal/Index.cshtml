@@ -1,0 +1,44 @@
+﻿@model List<NotaFiscalModel>
+@{
+    ViewData["Title"] = "Minhas Compras";
+}
+
+<div class="text-center">
+    <h1>Minhas compras</h1>
+</div>
+
+@if (TempData["MensagemSucesso"] != null)
+{
+                <div class="alert alert-success" role="alert">
+        @TempData["MensagemSucesso"]
+                </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+                <div class="alert alert-danger" role="alert">
+        @TempData["MensagemErro"]
+                </div>
+}
+
+<table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">Cliente</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+        @if (Model != null)
+        {
+            @foreach (NotaFiscalModel notaFiscal in Model)
+            {
+                                <tr>
+                                    <td>@notaFiscal.Usuario.Nome</td>
+                                    <td>@notaFiscal.Produto.Nome</td>
+                                    <td> R$@notaFiscal.Valor</td>
+                                </tr>
+            }
+        }
+    </tbody>
+</table>
